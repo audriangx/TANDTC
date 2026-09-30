@@ -309,27 +309,8 @@ Tối thiểu 32px cho nút và mục điều hướng.
 ### Chuyển động
 Hover, focus 150ms ease. Tôn trọng `prefers-reduced-motion`: tắt chuyển động và cuộn mượt.
 
-## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Khung: `{colors.navy-900}` → `{colors.navy-950}` · Header: `{colors.navy-header}`
-- Nút chính: `{colors.primary}` → `{colors.primary-light}`, 32px, `{rounded.sm}`
-- Nhấn: `{colors.accent}` · Liên kết: `{colors.link}` · Thành công: `{colors.success}`
-- Chữ: `{colors.ink}`, `{colors.body}`, `{colors.muted}`
-- Nền: `{colors.canvas}`, thẻ `{colors.surface}`, viền `{colors.hairline}`
-- Font: Space Grotesk (hiển thị) + DM Sans (nội dung)
-
-
-### Iteration Guide
-1. Sửa một component mỗi lần; gọi đúng tên token thay vì mô tả màu.
-2. Nút luôn là hình chữ nhật {rounded.sm}. Nếu thấy pill, đó là tag.
-3. Cam chỉ để báo "đang chọn" hoặc nhấn nhẹ; nếu cam chiếm diện tích lớn thì sai.
-4. Số liệu và tiêu đề dùng Space Grotesk với tracking âm; nội dung dùng DM Sans.
-5. Tách lớp bằng viền {colors.hairline} trước, rồi mới thêm bóng.
-6. Chữ cam trên nền trắng dùng {colors.warning}.
-7. Thêm màu hay cỡ mới thì cập nhật frontmatter và mục 2–3 trước khi dùng.
-
-### Known Gaps
+## Known Gaps
 - Chưa thiết kế: modal, toast, form và trạng thái lỗi/thành công của form, empty state, skeleton loading.
 - Bảng màu biểu đồ (chart palette) chưa xác định.
 - Bản tối mới có bảng màu và preview; chưa kiểm thử toàn bộ component ở bản tối.
