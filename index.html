@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FPT.dPLAT DESIGN.md – README</title>
+<style>
+:root{--bg:#0d1117;--sub:#161b22;--bd:#30363d;--fg:#e6edf3;--mute:#8b949e;--link:#4493f8;--acc:#f37021;--btn:#21262d;--code:#151b23;--ok:#3fb950;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+:root:not([data-theme=dark]):not([data-theme=light]){color-scheme:light dark}
+:root[data-theme=light]{--bg:#fff;--sub:#f6f8fa;--bd:#d1d9e0;--fg:#1f2328;--mute:#59636e;--link:#0969da;--btn:#f6f8fa;--code:#f6f8fa;--ok:#1a7f37;color-scheme:light}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]):not([data-theme=light]){--bg:#fff;--sub:#f6f8fa;--bd:#d1d9e0;--fg:#1f2328;--mute:#59636e;--link:#0969da;--btn:#f6f8fa;--code:#f6f8fa;--ok:#1a7f37}}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:70px}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.wrap{max-width:1012px;margin:0 auto;border-left:1px solid var(--bd);border-right:1px solid var(--bd);min-height:100vh}
+.tabs{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:4px;height:56px;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--bd)}
+.tabs button.t{position:relative;display:flex;align-items:center;gap:8px;height:56px;padding:0 12px;background:none;border:0;color:var(--fg);font:inherit;font-size:16px;cursor:pointer}
+.tabs button.t svg{width:18px;height:18px;stroke:var(--mute);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tabs button.t[aria-selected=true]{font-weight:600}
+.tabs button.t[aria-selected=true]::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;border-radius:2px;background:var(--acc)}
+.tabs button.t:not([aria-selected=true]){color:var(--fg)}
+.sp{flex:1}
+.tg{background:var(--btn);border:1px solid var(--bd);color:var(--fg);border-radius:6px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+.tg:hover{border-color:var(--mute)}
+.body{padding:32px 32px 72px}
+.pane[hidden]{display:none}
+.md h1,.md h2,.md h3{font-weight:600;line-height:1.25}
+.md h1{font-size:2em;padding-bottom:.3em;border-bottom:1px solid var(--bd);margin:24px 0 16px}
+.md h2{font-size:1.5em;padding-bottom:.3em;border-bottom:1px solid var(--bd);margin:32px 0 16px}
+.md h3{font-size:1.25em;margin:24px 0 16px}
+.md p,.md ul,.md ol,.md table,.md pre,.md .box{margin-bottom:16px}
+.md ul,.md ol{padding-left:2em}.md li{margin:.25em 0}
+.md code{font:85% ui-monospace,SFMono-Regular,Menlo,monospace;background:color-mix(in srgb,var(--mute) 20%,transparent);padding:.2em .4em;border-radius:6px}
+.md pre{position:relative;background:var(--code);border:1px solid var(--bd);border-radius:6px;padding:16px;overflow:auto;font:85%/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
+.md pre code{background:none;padding:0;font-size:100%}
+.cp{position:absolute;top:8px;right:8px;background:var(--btn);border:1px solid var(--bd);color:var(--fg);border-radius:6px;font-size:12px;padding:2px 8px;cursor:pointer}
+.tw{overflow-x:auto;margin-bottom:16px}
+.md table{border-collapse:collapse;margin:0;min-width:100%}
+.md th,.md td{border:1px solid var(--bd);padding:6px 13px;text-align:left}
+.md th{font-weight:600}.md tr:nth-child(2n) td{background:var(--sub)}
+.hero{text-align:center;padding:8px 0 4px}
+.hero h1{border:0;margin:8px 0 8px;font-size:2.4em}
+.hero p{color:var(--mute);margin-bottom:12px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:12px 0 4px}
+.b{display:inline-flex;font-size:11.5px;font-weight:600;border-radius:4px;overflow:hidden;line-height:20px}
+.b i{font-style:normal;padding:0 8px;background:#555;color:#fff}
+.b span{padding:0 8px;color:#fff}
+.box{border:1px solid var(--bd);padding:24px;text-align:center}
+.box h3{margin:0 0 12px;font-size:1.25em}
+.box p{color:var(--mute);margin-bottom:12px}
+.btns{display:inline-flex;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:none}
+.btns a{padding:8px 16px;color:#fff;text-decoration:none}
+.btns a:first-child{background:#5a5f66}.btns a:last-child{background:#0b6ecf}
+.pv{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:16px}
+.pv a{display:block;border:1px solid var(--bd);border-radius:6px;padding:14px 16px;background:var(--sub);text-decoration:none;color:var(--fg)}
+.pv a:hover{border-color:var(--acc)}
+.pv b{display:block;color:var(--link)}.pv small{color:var(--mute)}
+.sw{display:flex;gap:0;margin:0 0 16px;border-radius:6px;overflow:hidden;border:1px solid var(--bd)}
+.sw i{flex:1;height:36px}
+.note{color:var(--mute);font-size:.9em}
+@media(max-width:640px){.body{padding:20px 16px 56px}.tabs button.t{padding:0 8px;font-size:14px}.tabs button.t svg{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs" role="tablist" aria-label="Tài liệu">
+  <button class="t" role="tab" aria-selected="true" data-p="readme"><svg viewBox="0 0 24 24"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>README</button>
+  <button class="t" role="tab" aria-selected="false" data-p="contrib"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>Contributing</button>
+  <button class="t" role="tab" aria-selected="false" data-p="license"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M4 7h16M7 7l-3.5 7a3.5 3.5 0 0 0 7 0zM17 7l-3.5 7a3.5 3.5 0 0 0 7 0z"/></svg>MIT license</button>
+  <span class="sp"></span>
+  <button class="tg" id="tg" aria-label="Đổi giao diện sáng/tối">Sáng</button>
+</nav>
+<div class="body md">
+
+<!-- README -->
+<section class="pane" id="readme">
+<div class="hero">
+  <h1>FPT.dPLAT DESIGN.md</h1>
+  <p><b>Bộ mô tả design system cho nền tảng dữ liệu FPT.dPLAT, để AI agent dựng giao diện nhất quán.</b></p>
+  <div class="badges">
+    <span class="b"><i>DESIGN.md</i><span style="background:#f37021">9 sections</span></span>
+    <span class="b"><i>themes</i><span style="background:#0b2a5c">FPT | IBM | Apple</span></span>
+    <span class="b"><i>preview</i><span style="background:#1a4a9c">light + dark</span></span>
+    <span class="b"><i>license</i><span style="background:#10b981">MIT</span></span>
+  </div>
+</div>
+<div class="sw" aria-hidden="true"><i style="background:#050e22"></i><i style="background:#081833"></i><i style="background:#0b2a5c"></i><i style="background:#1a4a9c"></i><i style="background:#f37021"></i><i style="background:#ff9a55"></i><i style="background:#12703a"></i><i style="background:#e1e7f0"></i><i style="background:#f3f4f7"></i></div>
+
+<p>Chép <code>DESIGN.md</code> vào dự án, nói với AI agent "dựng cho tôi màn hình theo design system này", và giao diện sinh ra sẽ giữ đúng ngôn ngữ thiết kế của FPT.dPLAT.</p>
+<p>Repo mô tả cụ thể màu, chữ, kích thước, component và quy tắc, để kết quả đúng chất chứ không chỉ na ná.</p>
+
+<h2>Live preview</h2>
+<div class="pv">
+  <a href="design-md/fpt-dplat/preview.html" ><b>preview.html</b><small>Danh mục trực quan, nền sáng</small></a>
+  <a href="design-md/fpt-dplat/preview-dark.html" ><b>preview-dark.html</b><small>Danh mục trực quan, nền tối</small></a>
+  <a href="demo/glossary.html" ><b>demo/glossary.html</b><small>Màn Từ điển thuật ngữ, 3 theme</small></a>
+</div>
+
+<h2>DESIGN.md là gì?</h2>
+<p><a href="https://stitch.withgoogle.com/docs/design-md/overview/" target="_blank" rel="noopener">DESIGN.md</a> là khái niệm do Google Stitch giới thiệu: một tài liệu design system dạng văn bản thuần mà AI agent đọc để sinh UI nhất quán.</p>
+<p>Nó chỉ là một file markdown. Không cần xuất Figma, không cần JSON schema, không cần công cụ đặc biệt. Đặt vào thư mục gốc dự án, mọi AI coding agent đều hiểu giao diện cần trông thế nào.</p>
+<div class="tw"><table><thead><tr><th>File</th><th>Ai đọc</th><th>Định nghĩa gì</th></tr></thead><tbody>
+<tr><td><code>AGENTS.md</code></td><td>Coding agent</td><td>Cách xây dự án</td></tr>
+<tr><td><code>DESIGN.md</code></td><td>Design agent</td><td>Giao diện trông và cảm thế nào</td></tr></tbody></table></div>
+
+<h2>Design at a glance</h2>
+<div class="tw"><table><thead><tr><th>Thuộc tính</th><th>Giá trị</th></tr></thead><tbody>
+<tr><td>Tinh thần</td><td>Navy làm khung, cam làm điểm nhấn, thẻ trắng, hairline</td></tr>
+<tr><td>Nền khung</td><td><code>#081833 → #050e22</code> (sidebar), <code>#06112a</code> (header)</td></tr>
+<tr><td>Nhấn</td><td>Cam FPT <code>#f37021</code></td></tr>
+<tr><td>Liên kết</td><td><code>#0a56c4</code></td></tr>
+<tr><td>Nút chính</td><td>Gradient <code>#0b2a5c → #1a4a9c</code>, cao 32px, radius 8px</td></tr>
+<tr><td>Nội dung / Hiển thị</td><td>DM Sans (dự phòng Be Vietnam Pro) / Space Grotesk</td></tr>
+<tr><td>Icon</td><td>Line 18px, stroke 1.7</td></tr>
+<tr><td>Chế độ</td><td>Sáng + tối</td></tr></tbody></table></div>
+
+<div class="box">
+  <h3>👉 Cần design system cho sản phẩm khác trong hệ sinh thái FPT?</h3>
+  <p>Gửi yêu cầu để thêm một bộ DESIGN.md mới vào bộ sưu tập, gồm cả bản riêng tư chỉ dành cho đội của bạn.</p>
+  <span class="btns"><a href="#" onclick="go('contrib');return false">ĐỀ XUẤT BỘ MỚI</a><a href="#" onclick="go('contrib');return false">LIÊN HỆ</a></span>
+</div>
+
+<h2>Collection</h2>
+<h3>Nền tảng dữ liệu &amp; AI</h3>
+<ul>
+<li><a href="design-md/fpt-dplat/preview.html" target="_blank" rel="noopener"><b>FPT.dPLAT</b></a> - Nền tảng dữ liệu doanh nghiệp. Navy trầm, cam FPT, thẻ trắng, hairline, điềm tĩnh</li>
+</ul>
+<h3>Theme so sánh trong bản demo</h3>
+<ul>
+<li><b>IBM</b> - Kiểu Carbon. Góc vuông, IBM Plex Sans, ô nhập gạch chân</li>
+<li><b>Apple</b> - Kiểu SF. Kính mờ, bo tròn, tab dạng segmented</li>
+</ul>
+
+<h2>Cấu trúc repo</h2>
+<pre><code>fpt-dplat-design-md/
+├── README.md
+├── AGENTS.md                      # Hướng dẫn cho coding agent
+├── CONTRIBUTING.md
+├── LICENSE
+├── .gitignore
+├── .github/
+│   └── ISSUE_TEMPLATE.md
+├── design-md/
+│   └── fpt-dplat/
+│       ├── DESIGN.md              # Design system (agent đọc file này)
+│       ├── preview.html           # Danh mục trực quan, nền sáng
+│       └── preview-dark.html      # Danh mục trực quan, nền tối
+└── demo/
+    └── glossary.html              # Màn Từ điển thuật ngữ, có 3 theme</code></pre>
+
+<h2>Bên trong DESIGN.md</h2>
+<p>File theo <a href="https://stitch.withgoogle.com/docs/design-md/specification/" target="_blank" rel="noopener">định dạng Stitch DESIGN.md</a> với các mục mở rộng:</p>
+<div class="tw"><table><thead><tr><th>#</th><th>Mục</th><th>Nội dung</th></tr></thead><tbody>
+<tr><td>1</td><td>Visual Theme &amp; Atmosphere</td><td>Tinh thần, mật độ, triết lý thiết kế</td></tr>
+<tr><td>2</td><td>Color Palette &amp; Roles</td><td>Tên + hex + vai trò (có cả bảng dark)</td></tr>
+<tr><td>3</td><td>Typography Rules</td><td>Họ chữ, bảng phân cấp đầy đủ</td></tr>
+<tr><td>4</td><td>Component Stylings</td><td>Nút, thẻ, ô nhập, điều hướng, tag, bảng và trạng thái</td></tr>
+<tr><td>5</td><td>Layout Principles</td><td>Thang spacing, lưới, khoảng trắng</td></tr>
+<tr><td>6</td><td>Depth &amp; Elevation</td><td>Hệ thống bóng, phân tầng bề mặt</td></tr>
+<tr><td>7</td><td>Do's and Don'ts</td><td>Rào chắn thiết kế và điều cần tránh</td></tr>
+<tr><td>8</td><td>Responsive Behavior</td><td>Breakpoint, vùng chạm, cách thu gọn</td></tr>
+<tr><td>9</td><td>Agent Prompt Guide</td><td>Tham chiếu màu nhanh, prompt dùng ngay</td></tr></tbody></table></div>
+<p>Mỗi bộ gồm:</p>
+<div class="tw"><table><thead><tr><th>File</th><th>Mục đích</th></tr></thead><tbody>
+<tr><td><code>DESIGN.md</code></td><td>Design system (agent đọc)</td></tr>
+<tr><td><code>preview.html</code></td><td>Danh mục trực quan: ô màu, thang chữ, nút, thẻ</td></tr>
+<tr><td><code>preview-dark.html</code></td><td>Cùng danh mục trên nền tối</td></tr></tbody></table></div>
+
+<h2>Cách dùng</h2>
+<ol>
+<li>Chép <code>design-md/fpt-dplat/DESIGN.md</code> vào thư mục gốc dự án, cạnh <code>AGENTS.md</code>.</li>
+<li>Mở <code>preview.html</code> trong trình duyệt để xem nhanh hệ thống trước khi dựng.</li>
+<li>Bảo agent dùng nó.</li>
+</ol>
+<p><b>Prompt mẫu</b></p>
+<pre><code>Đọc DESIGN.md. Dựng màn Từ điển thuật ngữ đúng token: header navy 48px,
+sidebar 232px có icon line, 4 thẻ thống kê trắng có vạch cam, bảng thuật ngữ
+với tag viền. Nút chính 32px radius 8px.</code></pre>
+<pre><code>Tạo component Button theo Mục 4 của DESIGN.md: primary 32px gradient navy
+có viền cam mảnh, secondary và danger 30px, đủ hover, focus, disabled.</code></pre>
+<pre><code>Rà soát UI hiện tại so với Mục 7 (Do's and Don'ts), liệt kê chỗ vi phạm rồi sửa.</code></pre>
+
+<h2>Themes trong bản demo</h2>
+<p><code>demo/glossary.html</code> có nút chuyển giữa ba theme để so sánh:</p>
+<div class="tw"><table><thead><tr><th>Theme</th><th>Đặc trưng</th></tr></thead><tbody>
+<tr><td><b>FPT</b> (mặc định)</td><td>Navy + cam, thẻ trắng, Space Grotesk, bo 16px</td></tr>
+<tr><td><b>IBM</b></td><td>Kiểu Carbon: góc vuông, IBM Plex Sans, ô nhập gạch chân</td></tr>
+<tr><td><b>Apple</b></td><td>Kiểu SF: kính mờ, bo tròn, tab dạng segmented</td></tr></tbody></table></div>
+
+<h2>Đóng góp</h2>
+<p>Xem tab <a href="#" onclick="go('contrib');return false">Contributing</a>.</p>
+<ul><li><b>Sửa file hiện có:</b> sai màu, thiếu token, mô tả yếu.</li><li><b>Báo lỗi:</b> preview hiển thị lệch so với <code>DESIGN.md</code>.</li></ul>
+<p>Trước khi mở PR, vui lòng mở issue để trao đổi.</p>
+
+<h2>Giấy phép</h2>
+<p>MIT License, xem tab <a href="#" onclick="go('license');return false">MIT license</a>.</p>
+<p class="note">Repo là tài liệu thiết kế nội bộ ở dạng đề xuất. Tên và logo FPT thuộc về chủ sở hữu tương ứng. Các file được cung cấp "nguyên trạng", không kèm bảo hành.</p>
+</section>
+
+<!-- CONTRIBUTING -->
+<section class="pane" id="contrib" hidden>
+<h1>Đóng góp cho FPT.dPLAT DESIGN.md</h1>
+<p>Cảm ơn bạn đã góp phần giữ giao diện FPT.dPLAT nhất quán.</p>
+<h2>Bạn có thể làm gì</h2>
+<ul><li><b>Sửa file hiện có:</b> sai màu, thiếu token, mô tả chưa rõ.</li><li><b>Báo lỗi:</b> preview hiển thị sai so với <code>DESIGN.md</code>.</li><li><b>Đề xuất component mới:</b> ví dụ modal, toast, form, biểu đồ.</li></ul>
+<h2>Quy trình</h2>
+<ol><li>Mở issue trước để trao đổi ý tưởng (dùng mẫu trong <code>.github/ISSUE_TEMPLATE.md</code>).</li><li>Fork repo, tạo nhánh <code>fix/&lt;ten-ngan&gt;</code> hoặc <code>feat/&lt;ten-ngan&gt;</code>.</li><li>Sửa <code>design-md/fpt-dplat/DESIGN.md</code> <b>và</b> cập nhật <code>preview.html</code>, <code>preview-dark.html</code> cho khớp.</li><li>Mở Pull Request, đính kèm ảnh chụp trước/sau.</li></ol>
+<h2>Quy tắc</h2>
+<ul><li>Mọi màu, cỡ chữ, kích thước phải có trong <code>DESIGN.md</code> trước khi dùng trong code.</li><li>Giữ đúng 9 mục theo cấu trúc chuẩn.</li><li>Không thêm màu neon, không dải nhiều màu trong một đường line.</li><li>Kiểm tra tương phản chữ/nền đạt WCAG AA.</li><li>Viết ngắn, dùng bảng khi có thể.</li></ul>
+<h2>Checklist PR</h2>
+<ul style="list-style:none;padding-left:.5em"><li>☐ <code>DESIGN.md</code> đã cập nhật</li><li>☐ <code>preview.html</code> và <code>preview-dark.html</code> khớp</li><li>☐ <code>demo/glossary.html</code> vẫn hiển thị đúng</li><li>☐ Đã chụp ảnh trước/sau</li></ul>
+</section>
+
+<!-- LICENSE -->
+<section class="pane" id="license" hidden>
+<h1>MIT License</h1>
+<p>Copyright (c) 2026 FPT.dPLAT Design</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</section>
+
+</div>
+</div>
+<script>
+function go(id){
+  document.querySelectorAll('.pane').forEach(function(p){p.hidden=p.id!==id});
+  document.querySelectorAll('.tabs .t').forEach(function(b){b.setAttribute('aria-selected',b.dataset.p===id)});
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('.tabs .t').forEach(function(b){b.onclick=function(){go(b.dataset.p)}});
+var tg=document.getElementById('tg'),root=document.documentElement;
+function setT(t){root.dataset.theme=t;tg.textContent=t==='dark'?'Sáng':'Tối'}
+tg.onclick=function(){setT(root.dataset.theme==='dark'?'light':'dark')};
+document.querySelectorAll('pre').forEach(function(pre){
+  var b=document.createElement('button');b.className='cp';b.textContent='Copy';
+  b.onclick=function(){
+    var t=pre.innerText.replace(/^Copy\n?/,'');
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent='Đã chép'})}catch(e){b.textContent='Ctrl+C'}
+    setTimeout(function(){b.textContent='Copy'},1500)};
+  pre.appendChild(b)});
+</script>
+</body>
+</html>
