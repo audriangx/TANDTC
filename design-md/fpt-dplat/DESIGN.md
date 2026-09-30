@@ -319,13 +319,6 @@ Hover, focus 150ms ease. Tôn trọng `prefers-reduced-motion`: tắt chuyển �
 - Nền: `{colors.canvas}`, thẻ `{colors.surface}`, viền `{colors.hairline}`
 - Font: Space Grotesk (hiển thị) + DM Sans (nội dung)
 
-### Example Component Prompts
-1. "Đọc DESIGN.md. Dựng màn Từ điển thuật ngữ: header navy 48px, sidebar 232px có icon line, 4 thẻ thống kê trắng có vạch cam, bảng thuật ngữ với tag viền, panel chi tiết bên phải."
-2. "Tạo component Button theo {components.button-primary}: 32px, gradient navy, viền trong cam mảnh; thêm secondary và danger 30px, đủ hover, focus, disabled."
-3. "Làm thẻ thống kê theo {components.stat-card}: nền trắng, {rounded.xl}, vạch cam 36×2px ở góc trên trái, số {typography.stat}."
-4. "Thêm theme `data-theme=fpt` chạy song song theme IBM và Apple, khai báo toàn bộ token ở mục frontmatter dưới dạng CSS variables trên `:root`."
-5. "Dựng bản tối dùng nhóm token `*-dark`, giữ nguyên cam {colors.accent}."
-6. "Rà soát UI hiện tại so với Mục 7, liệt kê chỗ vi phạm rồi sửa."
 
 ### Iteration Guide
 1. Sửa một component mỗi lần; gọi đúng tên token thay vì mô tả màu.
