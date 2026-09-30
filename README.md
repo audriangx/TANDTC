@@ -15,17 +15,6 @@ Chép `DESIGN.md` vào dự án, nói với AI agent "dựng cho tôi màn hình
 
 Repo mô tả cụ thể màu, chữ, kích thước, component và quy tắc, để kết quả đúng chất chứ không chỉ na ná.
 
-## Live preview
-
-Sau khi bật GitHub Pages (Settings → Pages → `main` / root), thay `<user>` bằng tên tài khoản của bạn:
-
-| Trang | Link |
-|---|---|
-| README dạng web | `https://<user>.github.io/fpt-dplat-design-md/` |
-| Preview sáng | `https://<user>.github.io/fpt-dplat-design-md/design-md/fpt-dplat/preview.html` |
-| Preview tối | `https://<user>.github.io/fpt-dplat-design-md/design-md/fpt-dplat/preview-dark.html` |
-| Demo Từ điển thuật ngữ | `https://<user>.github.io/fpt-dplat-design-md/demo/glossary.html` |
-
 ## DESIGN.md là gì?
 
 [DESIGN.md](https://stitch.withgoogle.com/docs/design-md/overview/) là khái niệm do Google Stitch giới thiệu: một tài liệu design system dạng văn bản thuần mà AI agent đọc để sinh UI nhất quán.
@@ -56,8 +45,6 @@ Nó chỉ là một file markdown. Không cần xuất Figma, không cần JSON 
 ```
 fpt-dplat-design-md/
 ├── README.md
-├── index.html                     # README dạng web (GitHub Pages)
-├── .nojekyll
 ├── AGENTS.md                      # Hướng dẫn cho coding agent
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -75,7 +62,7 @@ fpt-dplat-design-md/
 
 ## Bên trong DESIGN.md
 
-File theo [định dạng Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/specification/): phần YAML frontmatter khai báo token (màu, chữ, bo góc, spacing, component), theo sau là 9 mục mở rộng:
+File theo [định dạng Stitch DESIGN.md](https://stitch.withgoogle.com/docs/design-md/specification/) với các mục mở rộng:
 
 | # | Mục | Nội dung |
 |---|---|---|
@@ -87,7 +74,7 @@ File theo [định dạng Stitch DESIGN.md](https://stitch.withgoogle.com/docs/d
 | 6 | Depth & Elevation | Hệ thống bóng, phân tầng bề mặt |
 | 7 | Do's and Don'ts | Rào chắn thiết kế và điều cần tránh |
 | 8 | Responsive Behavior | Breakpoint, vùng chạm, cách thu gọn |
-| 9 | Agent Prompt Guide | Tham chiếu màu nhanh, prompt mẫu, Iteration Guide, Known Gaps |
+| 9 | Agent Prompt Guide | Tham chiếu màu nhanh, prompt dùng ngay |
 
 Mỗi bộ gồm:
 

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FPT.dPLAT – Design System Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<style>
+:root{--navy950:#050e22;--navy900:#081833;--navyh:#06112a;--navy700:#0b2a5c;--blue600:#1a4a9c;--link:#0a56c4;--o500:#f37021;--o400:#ff9a55;--o300:#ffb37a;--green:#12703a;--warn:#b4470a;--danger:#c62828;--ink:#06284d;--fg:#0f1f3a;--mute:#64728a;--line:#e1e7f0;--surface:#f3f4f7;--card:#fff;--t1:#fff4ea;--t2:#fff5ed;--t3:#fffaf6;--glow:#dbe7fb;
+--body:'DM Sans','Be Vietnam Pro',system-ui,sans-serif;--disp:'Space Grotesk','DM Sans',sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--body);font-size:14px;line-height:1.45;color:var(--fg);background:radial-gradient(800px 260px at 80% -80px,var(--glow),transparent 70%),var(--surface);-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid rgba(10,86,196,.35);outline-offset:1px}
+.top{position:sticky;top:0;z-index:5;height:48px;display:flex;align-items:center;gap:22px;padding:0 24px;background:rgba(6,17,42,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,122,26,.35);overflow-x:auto;white-space:nowrap}
+.logo{font-weight:700;letter-spacing:.04em;background:linear-gradient(90deg,var(--o300),var(--o500) 60%,var(--o300));-webkit-background-clip:text;background-clip:text;color:transparent}
+.top a{color:#c9d4e8;text-decoration:none;font-size:13px}
+.top a:hover{color:#fff}
+main{max-width:1100px;margin:0 auto;padding:40px 24px 80px}
+h1{font-family:var(--disp);font-weight:700;font-size:2.6rem;letter-spacing:-.045em;line-height:1.05;color:var(--ink)}
+.lead{color:var(--mute);margin-top:8px;font-size:15px;max-width:60ch}
+section{margin-top:48px}
+h2{font-family:var(--disp);font-size:22px;letter-spacing:-.03em;color:var(--ink);font-weight:700}
+.note{color:var(--mute);margin:4px 0 18px}
+h3{font-size:12.5px;font-weight:500;color:var(--mute);margin:20px 0 10px}
+.grid{display:grid;gap:14px}
+.g6{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.g3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 44px -28px rgba(11,31,68,.4)}
+.sw{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.sw i{display:block;height:74px}
+.sw div{padding:10px 12px}
+.sw b{display:block;font-size:13px;color:var(--ink)}
+.sw code{font-size:12px;color:var(--mute);font-family:ui-monospace,Menlo,monospace}
+.sw span{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.grad{height:64px;border-radius:14px;display:flex;align-items:flex-end;padding:8px 12px;color:#fff;font-size:12px}
+.type{padding:8px 24px}
+.tr{display:grid;grid-template-columns:150px 1fr 190px;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.tr:last-child{border:0}
+.tr small{color:var(--mute);font-size:12px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{border:0;cursor:pointer;height:32px;padding:0 14px;border-radius:8px;font:600 13.5px var(--body);color:#fff;background:linear-gradient(135deg,var(--navy700),var(--blue600));box-shadow:inset 0 0 0 1px rgba(243,112,33,.6),0 10px 20px -12px rgba(11,42,92,.8)}
+.btn:hover,.btn.h{filter:brightness(1.1)}
+.btn.f{outline:3px solid rgba(10,86,196,.35);outline-offset:1px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.mini{height:30px;padding:0 12px;border-radius:8px;background:#fff;border:1px solid #d5ddea;font:400 13px var(--body);color:var(--fg);cursor:pointer}
+.mini:hover,.mini.h{background:var(--t1);border-color:var(--o500)}
+.mini.del{color:var(--danger)}
+select{height:30px;padding:0 10px;border-radius:8px;background:#fff;border:1px solid #d5ddea;font:400 13px var(--body);color:var(--fg)}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;border:1px solid currentColor;font-size:12px;font-weight:500}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.lab{font-size:11.5px;color:var(--mute);margin-top:6px}
+.stat{position:relative;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px -22px rgba(11,31,68,.35)}
+.stat::before{content:"";position:absolute;top:0;left:24px;width:36px;height:2px;background:linear-gradient(90deg,var(--o500),var(--o400))}
+.stat span{color:var(--mute)}
+.stat b{display:block;font-family:var(--disp);font-size:46px;line-height:1;letter-spacing:-.06em;color:var(--ink);margin-top:10px}
+.set{padding:14px 20px;background:linear-gradient(90deg,var(--t2),#fff);border:1px solid var(--line);border-left:3px solid var(--o500);border-radius:12px;box-shadow:0 4px 14px -8px rgba(10,40,100,.25)}
+.set small{display:block;color:var(--mute)}
+.side{width:232px;padding:14px 12px;border-radius:16px;background:linear-gradient(180deg,var(--navy900),var(--navy950));border:1px solid rgba(243,112,33,.18)}
+.grp{padding:8px 12px 4px;font-size:11.5px;color:#8fa3c7}
+.nav{position:relative;display:flex;align-items:center;gap:10px;height:32px;padding:0 12px;border-radius:10px;color:#c9d4e8;font-weight:500;font-size:13.5px}
+.nav svg,.ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:#8fa3c7}
+.nav.on{color:#fff;background:linear-gradient(90deg,rgba(243,112,33,.16),rgba(243,112,33,.02))}
+.nav.on svg{color:var(--o500)}
+.nav.on::before{content:"";position:absolute;left:-12px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:linear-gradient(#ff9a55,#f37021)}
+.hdr{display:flex;align-items:center;gap:16px;height:48px;padding:0 16px;border-radius:14px;background:rgba(6,17,42,.94);border-bottom:1px solid rgba(255,122,26,.35)}
+.hdr .s{flex:1;max-width:280px;height:32px;padding:0 12px;display:flex;align-items:center;gap:8px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#93a4c4;font-size:13px}
+.hdr .s svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.av{width:32px;height:32px;border-radius:50%;background:var(--navy700);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:600;box-shadow:0 0 0 2px #06112a,0 0 0 3px var(--o500)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;padding:10px 12px;font:600 13.5px var(--disp);color:var(--mute);border-bottom:2px solid transparent;cursor:pointer}
+.tabs .on{color:var(--ink);border-color:var(--o500)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-weight:500;font-size:12.5px;color:var(--mute);padding:12px 16px;border-bottom:1px solid var(--line)}
+td{padding:10px 16px;border-bottom:1px solid var(--line)}
+td b{display:block;font:600 15px var(--disp);letter-spacing:-.01em}
+td small{color:var(--mute)}
+tr.on td{background:var(--t1)}
+.elev{height:110px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:16px;background:#fff}
+.elev small{color:var(--mute)}
+.sp{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.sp div{text-align:center;font-size:11.5px;color:var(--mute)}
+.sp i{display:block;background:linear-gradient(135deg,var(--navy700),var(--blue600));margin:0 auto 6px;border-radius:3px}
+.rad{width:84px;height:64px;background:var(--t1);border:1px solid var(--o400);display:grid;place-items:center;font-size:12px;color:var(--warn)}
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dd>div{padding:16px 20px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:13.5px}
+.dd h4{font:700 15px var(--disp);margin-bottom:8px}
+.dd li{margin:4px 0 4px 16px}
+.yes h4{color:var(--green)}.no h4{color:var(--danger)}
+@media(max-width:720px){.tr{grid-template-columns:1fr}.dd{grid-template-columns:1fr}main{padding:28px 16px 60px}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<header class="top"><span class="logo">FPT.dPLAT</span><a href="#color">Màu</a><a href="#type">Chữ</a><a href="#buttons">Nút</a><a href="#cards">Thẻ</a><a href="#nav">Điều hướng</a><a href="#table">Bảng</a><a href="#depth">Bóng &amp; khoảng cách</a><a href="#rules">Quy tắc</a></header>
+<main>
+<h1>Design System Analysis: FPT.dPLAT</h1>
+<p class="lead">Nền tảng dữ liệu doanh nghiệp. Khung navy trầm, nội dung sáng, điểm nhấn cam FPT. Bản xem trước trực quan của DESIGN.md.</p>
+
+<section id="color"><h2>Color palette &amp; roles</h2><p class="note">Mỗi ô hiển thị tên, mã hex và vai trò dùng.</p>
+<h3>Khung navy</h3>
+<div class="grid g6">
+<div class="sw"><i style="background:#050e22"></i><div><b>navy-950</b><code>#050e22</code><span>Đáy sidebar</span></div></div>
+<div class="sw"><i style="background:#081833"></i><div><b>navy-900</b><code>#081833</code><span>Đỉnh sidebar</span></div></div>
+<div class="sw"><i style="background:#06112a"></i><div><b>navy-header</b><code>#06112a</code><span>Header (α .94)</span></div></div>
+<div class="sw"><i style="background:#0b2a5c"></i><div><b>navy-700</b><code>#0b2a5c</code><span>Nút, avatar</span></div></div>
+<div class="sw"><i style="background:#1a4a9c"></i><div><b>blue-600</b><code>#1a4a9c</code><span>Đầu sáng gradient</span></div></div>
+<div class="sw"><i style="background:#0a56c4"></i><div><b>blue-link</b><code>#0a56c4</code><span>Liên kết, focus</span></div></div></div>
+<h3>Điểm nhấn &amp; trạng thái</h3>
+<div class="grid g6">
+<div class="sw"><i style="background:#f37021"></i><div><b>orange-500</b><code>#f37021</code><span>Mục chọn, vạch nhấn</span></div></div>
+<div class="sw"><i style="background:#ff9a55"></i><div><b>orange-400</b><code>#ff9a55</code><span>Đầu sáng gradient cam</span></div></div>
+<div class="sw"><i style="background:#ffb37a"></i><div><b>orange-300</b><code>#ffb37a</code><span>Chữ logo</span></div></div>
+<div class="sw"><i style="background:#12703a"></i><div><b>green-700</b><code>#12703a</code><span>Đã duyệt</span></div></div>
+<div class="sw"><i style="background:#b4470a"></i><div><b>warn-700</b><code>#b4470a</code><span>Nháp, cảnh báo</span></div></div>
+<div class="sw"><i style="background:#c62828"></i><div><b>danger</b><code>#c62828</code><span>Nút Xóa</span></div></div></div>
+<h3>Trung tính &amp; nền</h3>
+<div class="grid g6">
+<div class="sw"><i style="background:#06284d"></i><div><b>ink</b><code>#06284d</code><span>Tiêu đề, số</span></div></div>
+<div class="sw"><i style="background:#0f1f3a"></i><div><b>fg</b><code>#0f1f3a</code><span>Chữ nội dung</span></div></div>
+<div class="sw"><i style="background:#64728a"></i><div><b>mute</b><code>#64728a</code><span>Chữ phụ</span></div></div>
+<div class="sw"><i style="background:#e1e7f0"></i><div><b>line</b><code>#e1e7f0</code><span>Viền, kẻ bảng</span></div></div>
+<div class="sw"><i style="background:#f3f4f7"></i><div><b>surface</b><code>#f3f4f7</code><span>Nền nội dung</span></div></div>
+<div class="sw"><i style="background:#fff4ea"></i><div><b>tint-orange</b><code>#fff4ea</code><span>Dòng đang chọn</span></div></div></div>
+<h3>Gradient</h3>
+<div class="grid g3">
+<div class="grad" style="background:linear-gradient(135deg,#0b2a5c,#1a4a9c)">Nút chính · #0b2a5c → #1a4a9c</div>
+<div class="grad" style="background:linear-gradient(180deg,#081833,#050e22)">Sidebar · #081833 → #050e22</div>
+<div class="grad" style="background:linear-gradient(90deg,#ffb37a,#f37021 60%,#ffb37a);color:#4a2100">Logo · #ffb37a → #f37021</div></div>
+</section>
+
+<section id="type"><h2>Typography rules</h2><p class="note">DM Sans cho nội dung, Space Grotesk cho tiêu đề và số liệu, Be Vietnam Pro dự phòng dấu tiếng Việt.</p>
+<div class="card type">
+<div class="tr"><small>Page title</small><span style="font:700 34px var(--disp);letter-spacing:-.045em;color:var(--ink)">Từ điển thuật ngữ</span><small>Space Grotesk · 34/700</small></div>
+<div class="tr"><small>Stat number</small><span style="font:700 46px var(--disp);letter-spacing:-.06em;color:var(--ink)">1.284</span><small>Space Grotesk · 46/700</small></div>
+<div class="tr"><small>Panel title</small><span style="font:700 19px var(--disp);letter-spacing:-.02em;color:var(--ink)">Business Glossary</span><small>Space Grotesk · 19/700</small></div>
+<div class="tr"><small>Term name</small><span style="font:600 15px var(--disp)">Khách hàng</span><small>Space Grotesk · 15/600</small></div>
+<div class="tr"><small>Body</small><span>Quản lý bộ thuật ngữ nghiệp vụ và quy trình duyệt.</span><small>DM Sans · 14/400</small></div>
+<div class="tr"><small>Nav / Button</small><span style="font-weight:600;font-size:13.5px">Thêm thuật ngữ</span><small>DM Sans · 13.5/500–600</small></div>
+<div class="tr"><small>Table header</small><span style="font-weight:500;font-size:12.5px;color:var(--mute)">Trạng thái</span><small>DM Sans · 12.5/500</small></div>
+<div class="tr"><small>Caption</small><span style="font-size:12px;color:var(--mute)">Business Glossary.Khách hàng</span><small>DM Sans · 12/400</small></div>
+</div></section>
+
+<section id="buttons"><h2>Buttons, inputs &amp; tags</h2><p class="note">Nút chính cao 32px, radius 8px. Nút phụ và select cao 30px.</p>
+<div class="card" style="padding:24px">
+<h3 style="margin-top:0">Primary — 32px · radius 8px</h3>
+<div class="row"><div><button class="btn">Thêm thuật ngữ</button><div class="lab">Default</div></div><div><button class="btn h">Thêm thuật ngữ</button><div class="lab">Hover</div></div><div><button class="btn f">Thêm thuật ngữ</button><div class="lab">Focus</div></div><div><button class="btn" disabled>Thêm thuật ngữ</button><div class="lab">Disabled</div></div></div>
+<h3>Secondary &amp; danger — 30px</h3>
+<div class="row"><div><button class="mini">Sửa</button><div class="lab">Default</div></div><div><button class="mini h">Sửa</button><div class="lab">Hover</div></div><div><button class="mini del">Xóa</button><div class="lab">Danger</div></div><div><select><option>Nháp</option><option>Đã duyệt</option></select><div class="lab">Select</div></div></div>
+<h3>Tags trạng thái</h3>
+<div class="row"><span class="tag" style="color:var(--green)">Đã duyệt</span><span class="tag" style="color:var(--link)">Chờ duyệt</span><span class="tag" style="color:var(--warn)">Nháp</span></div>
+</div></section>
+
+<section id="cards"><h2>Cards</h2><p class="note">Thẻ trắng, viền hairline, vạch cam nhỏ, bóng dài mờ.</p>
+<div class="grid g3">
+<div class="stat"><span>Tổng thuật ngữ</span><b>4</b></div>
+<div class="stat"><span>Đã duyệt</span><b>1</b></div>
+<div class="set"><b style="font:600 15px var(--disp)">Business Glossary</b><small>4 thuật ngữ · Data Steward</small></div></div>
+</section>
+
+<section id="nav"><h2>Sidebar &amp; header</h2><p class="note">Icon line 18px, nét 1.7. Mục đang chọn có vạch và icon cam.</p>
+<div class="row" style="align-items:flex-start;gap:20px">
+<div class="side"><div class="grp">Dữ liệu</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Kho làm việc</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Kết nối</div>
+<div class="grp">Quản trị dữ liệu</div>
+<div class="nav on"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM20 17v4H6.5A2.5 2.5 0 0 1 4 18.5"/></svg>Từ điển thuật ngữ</div>
+<div class="nav"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg>Chất lượng dữ liệu</div></div>
+<div style="flex:1;min-width:280px;display:grid;gap:14px">
+<div class="hdr"><span class="logo">FPT.dPLAT</span><div class="s"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Tìm bảng, job, notebook…</div><span style="flex:1"></span><div class="av">PT</div></div>
+<div class="card" style="padding:0 12px"><div class="tabs"><button class="on">Thuật ngữ</button><button>Sơ đồ quan hệ</button><button>Nhật ký hoạt động</button></div></div>
+</div></div></section>
+
+<section id="table"><h2>Table</h2><p class="note">Tiêu đề không nền, dòng đang chọn nền cam nhạt.</p>
+<div class="card" style="overflow:auto"><table style="min-width:520px"><thead><tr><th>Tên</th><th>Trạng thái</th><th>Chủ quản</th><th style="text-align:right">Thao tác</th></tr></thead><tbody>
+<tr class="on"><td><b>Bản nháp thuật ngữ</b><small>Business Glossary.Bản nháp</small></td><td><span class="tag" style="color:var(--warn)">Nháp</span></td><td>Analyst</td><td style="text-align:right"><button class="mini">Sửa</button> <button class="mini del">Xóa</button></td></tr>
+<tr><td><b>Khách hàng</b><small>Business Glossary.Khách hàng</small></td><td><span class="tag" style="color:var(--green)">Đã duyệt</span></td><td>Data Steward</td><td style="text-align:right"><button class="mini">Sửa</button> <button class="mini del">Xóa</button></td></tr>
+</tbody></table></div></section>
+
+<section id="depth"><h2>Depth, spacing &amp; radius</h2>
+<h3>Elevation</h3>
+<div class="grid g3">
+<div class="elev" style="border:1px solid var(--line)"><b>Mức 0</b><small>Nền, bảng · không bóng</small></div>
+<div class="elev" style="box-shadow:0 14px 34px -22px rgba(11,31,68,.35);border:1px solid var(--line)"><b>Mức 1</b><small>Thẻ thống kê · 0 14 34 -22</small></div>
+<div class="elev" style="box-shadow:0 20px 44px -28px rgba(11,31,68,.4);border:1px solid var(--line)"><b>Mức 2</b><small>Panel · 0 20 44 -28</small></div></div>
+<h3>Spacing (đơn vị 4px)</h3>
+<div class="sp"><div><i style="width:4px;height:4px"></i>4</div><div><i style="width:8px;height:8px"></i>8</div><div><i style="width:12px;height:12px"></i>12</div><div><i style="width:16px;height:16px"></i>16</div><div><i style="width:20px;height:20px"></i>20</div><div><i style="width:24px;height:24px"></i>24</div><div><i style="width:32px;height:32px"></i>32</div></div>
+<h3>Radius</h3>
+<div class="row"><div class="rad" style="border-radius:8px">8 · nút</div><div class="rad" style="border-radius:10px">10 · nav</div><div class="rad" style="border-radius:12px">12 · ô</div><div class="rad" style="border-radius:16px">16 · thẻ</div><div class="rad" style="border-radius:999px">pill · tag</div></div>
+</section>
+
+<section id="rules"><h2>Do's and Don'ts</h2><br>
+<div class="dd"><div class="yes"><h4>Nên</h4><ul><li>Dùng token trong DESIGN.md</li><li>Giữ nút chính 32px, radius 8px</li><li>Để cam là điểm nhấn hiếm</li><li>Chữ cam trên nền trắng dùng #b4470a</li></ul></div>
+<div class="no"><h4>Không nên</h4><ul><li>Dải nhiều màu trong một đường line</li><li>Màu neon, cyan bão hòa</li><li>Tô nền lớn bằng cam</li><li>Dùng font ngoài bộ đã chọn</li></ul></div></div></section>
+</main>
+</body>
+</html>
